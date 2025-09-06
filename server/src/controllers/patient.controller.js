@@ -68,7 +68,7 @@ export const updatePatient = async (req, res) => {
   try {
     const updated = await Patient.findByIdAndUpdate(id, updateDetails);
     if (!updated) {
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Patient not found" });
     }
     res.status(200).json({ message: "Patient details updated successfully" });
   } catch (error) {
@@ -82,7 +82,7 @@ export const deletePatient = async (req, res) => {
   try {
     const deleted = await Patient.findByIdAndDelete(id);
     if (!deleted) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Patient not found" });
     }
     res.status(200).json({ message: "Patient details deleted successfully" });
   } catch (error) {

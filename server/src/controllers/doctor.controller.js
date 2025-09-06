@@ -18,7 +18,7 @@ export const addDoctor = async (req, res) => {
 
     res.status(200).json(newDoctor);
   } catch (error) {
-    console.log("Error in saveDoctor controller", error.message);
+    console.log("Error in addDoctor controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -41,7 +41,7 @@ export const getSpecificDoctor = async (req, res) => {
   try {
     const doctor = await Doctor.findById(id);
     if (!doctor) {
-      return res.status(404).json({ message: "No doctor found" });
+      return res.status(404).json({ message: "Doctor not found" });
     }
     res.status(200).json(doctor);
   } catch (error) {
@@ -58,7 +58,7 @@ export const updateDoctor = async (req, res) => {
     const updated = await Doctor.findByIdAndUpdate(id, updateDetails);
 
     if (!updated) {
-      return res.status(404).json({ message: "No doctor found" });
+      return res.status(404).json({ message: "Doctor not found" });
     }
     res.status(200).json({ message: "Doctor details updated successfully" });
   } catch (error) {
@@ -76,7 +76,7 @@ export const deleteDoctor = async (req, res) => {
       return res.status(404).json({ message: "No doctor found" });
     }
   } catch (error) {
-    console.log("Error in updateDoctor controller", error.message);
+    console.log("Error in deleteDoctor controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

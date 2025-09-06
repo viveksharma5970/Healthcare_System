@@ -43,7 +43,7 @@ export const getDoctorAssigned = async (req, res) => {
     const mapping = await Mapping.findOne({ patientId })
       .populate("doctorId", "fullName specialization contact");
     if (!mapping) {
-      return res.status(404).json({ message: "No doctors assigned to this patient" });
+      return res.status(404).json({ message: "No doctor assigned to this patient" });
     }
     res.status(200).json(mapping.doctorId);
   } catch (error) {
