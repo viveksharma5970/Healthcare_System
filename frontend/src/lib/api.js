@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5050/api';
+const API_URL_HOSTED = "https://healthcare-system-backend.vercel.app/api"
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: API_URL_HOSTED,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
