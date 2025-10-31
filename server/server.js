@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(
   cors({
-    origin:["http://localhost:5173","https://healthcare-system-84x9.vercel.app/"],
+    origin:["http://localhost:5173","https://healthcare-system-84x9.vercel.app"],
     credentials: true,
   })
 );
