@@ -15,7 +15,7 @@ export const useDoctorStore = create((set) => ({
     } catch (error) {
       set({ isLoading: false });
       if (error.response?.status !== 404) {
-        toast.error('Failed to fetch doctors');
+        // toast.error('Failed to fetch doctors');
       } else {
         set({ doctors: [] });
       }

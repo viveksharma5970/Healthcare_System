@@ -41,20 +41,15 @@ app.use("/api/mappings", mappings);
 const clientPath = path.join(__dirname, "client");
 app.use(express.static(clientPath));
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(clientPath, "index.html"));
 });
 
 // ✅ Connect DB
 await connectDB();
 
-// ✅ For local dev
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () =>
-    console.log(`✅ Server running on port ${PORT}`)
-  );
-}
-
-// ✅ For Vercel
-export default app;
+// ✅ Start server (for Render)
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
