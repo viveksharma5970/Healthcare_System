@@ -1,0 +1,7 @@
+{
+  "name": "my-fullstack-app",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm run build"
+  }
+}
