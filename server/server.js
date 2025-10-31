@@ -2,8 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import path from "path";
-import { fileURLToPath } from "url";
 
 import auth from "./src/routes/auth.routes.js";
 import patients from "./src/routes/patients.routes.js";
@@ -37,13 +35,6 @@ app.use("/api/patients", patients);
 app.use("/api/doctors", doctors);
 app.use("/api/mappings", mappings);
 
-// ✅ Serve frontend (after build)
-const clientPath = path.join(__dirname, "client");
-app.use(express.static(clientPath));
-
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(clientPath, "index.html"));
-});
 
 // ✅ Connect DB
 await connectDB();
